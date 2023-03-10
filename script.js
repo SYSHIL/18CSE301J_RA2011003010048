@@ -118,7 +118,6 @@ let generateAxes = () => {
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
         .text('GDP (in terms of billion USD $)')
-
 }
 req.open('GET', url, true)
 req.onload = () => {
