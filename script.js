@@ -9,9 +9,9 @@ let xScale
 let xAxisScale
 let yAxisScale
 
-let width = 800
+let width = 1000
 let height = 600
-let padding = 40
+let padding = 70
 
 let svg = d3.select('svg')
 
@@ -101,13 +101,25 @@ let generateAxes = () => {
         .attr('id', 'x-axis')
         .attr('transform', 'translate(0, ' + (height-padding) + ')')
 
+    svg.append('text')
+        .attr('transform', 'translate(' + (width/2) + ', ' + (height-padding/2 + 20) + ')')
+        .style('text-anchor', 'middle')
+        .text('Year')
+
     svg.append('g')
         .call(yAxis)
         .attr('id', 'y-axis')
         .attr('transform', 'translate(' + padding + ', 0)')
-        
-}
 
+    svg.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', (height/2)-300)
+        .attr('x', -(height / 2) - 20)
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text('GDP (in terms of billion USD $)')
+
+}
 req.open('GET', url, true)
 req.onload = () => {
     data = JSON.parse(req.responseText)
